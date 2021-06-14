@@ -1,23 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { useQuery } from 'react-query';
 
 function App() {
+  const {
+    data,
+    error,
+    isLoading,
+    isError,
+    isSuccess,
+    isFetched,
+    isIdle,
+    isStale,
+  } = useQuery('hello-world', () => {
+    return new Promise(function (resolve, reject) {
+      // resolve('Stuff worked! 123');
+      // resolve(null);
+      reject("Reject - Stuff didn't work... !!! 123");
+    });
+  });
+
+  console.log({ Data: data, error });
+
+  console.log({
+    isLoading: isLoading,
+    isError: isError,
+    isSuccess: isSuccess,
+    isFetched: isFetched,
+    isIdle: isIdle,
+    isStale: isStale,
+  });
+  console.log('--------------------------');
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <h1>Ashutosh</h1>
     </div>
   );
 }
